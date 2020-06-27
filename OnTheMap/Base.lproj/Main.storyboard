@@ -196,7 +196,7 @@
         <!--Add Location-->
         <scene sceneID="DnA-aR-KfK">
             <objects>
-                <viewController id="9QS-TE-oML" sceneMemberID="viewController">
+                <viewController id="9QS-TE-oML" customClass="AddLocationViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iHZ-Bx-BEZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -261,10 +261,10 @@
             </objects>
             <point key="canvasLocation" x="5284.057971014493" y="249.77678571428569"/>
         </scene>
-        <!--View Controller-->
+        <!--Confirm Location View Controller-->
         <scene sceneID="Dqr-8l-hka">
             <objects>
-                <viewController id="6v7-0E-HZu" sceneMemberID="viewController">
+                <viewController id="6v7-0E-HZu" customClass="ConfirmLocationViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JDs-y9-qJe">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -307,6 +307,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="hpq-cU-VBx" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="qcL-NA-45G">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
