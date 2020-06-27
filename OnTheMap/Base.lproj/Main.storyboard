@@ -101,7 +101,7 @@
                         <outlet property="emailTextField" destination="Fw5-9m-1ue" id="7iO-Xb-Hd4"/>
                         <outlet property="loginButton" destination="BPw-wr-gUy" id="zLS-m2-znl"/>
                         <outlet property="passwordTextField" destination="8pX-9W-wLX" id="m6n-LE-teX"/>
-                        <segue destination="hpq-cU-VBx" kind="presentation" modalPresentationStyle="fullScreen" id="txO-Nt-56F"/>
+                        <segue destination="hpq-cU-VBx" kind="presentation" identifier="LogInSuccessSegue" modalPresentationStyle="fullScreen" id="txO-Nt-56F"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -317,7 +317,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="5e0-70-ZDk">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="hpq-cU-VBx" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="PinsTabViewControl" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hpq-cU-VBx" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="qcL-NA-45G">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>

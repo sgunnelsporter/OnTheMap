@@ -63,40 +63,39 @@ class UdacityAPI {
             
         }
         task.resume()
-           //do {
-                //request.httpBody = try JSONEncoder().encode(body)
-          // } catch {
-          //     print(error)
-          // }
-        
-           // start task and send request
-           /*let task = URLSession.shared.dataTask(with: request) { data, response, error in
-             if error != nil {
-                print(error?.localizedDescription)
-                 DispatchQueue.main.async { completion(false, error)}
-             } else {
-                do {
-                    let range = 5..<data!.count
-                    let newData = data?.subdata(in: range) /* subset response data! */
-                    let responseObject = try JSONDecoder().decode(PostSessionResponse.self, from: newData!)
-                    
-                    print("Data looked at as Post session")
-                    DispatchQueue.main.async {
-                        UserSession.userId = responseObject.account.key
-                        completion(true, nil)
-                    }
-                } catch {
-                    print("what the hell0!!")
-                    DispatchQueue.main.async { completion(false, error)}
-                }
-            }
-            }
-            task.resume()*/
     }
     
     
-    class func getRequest<ResponseType: Decodable>(url: URL, responseType: ResponseType.Type, isForLogin: Bool, completion: @escaping (ResponseType?, Error?) -> Void) {
-        let url = isForLogin ? URL(string: UdacityAPI.Endpoint.getUserInformationEndpoint.rawValue + "\(UserSession.userId)") : Endpoint.getMapPointsURL.url
+    class func getUserInformationRequest(completion: @escaping (Bool, Error?) -> Void) {
+        let url = URL(string: UdacityAPI.Endpoint.getUserInformationEndpoint.rawValue + "\(UserSession.userId)")
+        
+        let urlRequest = URLRequest(url: url!)
+        let task = URLSession.shared.dataTask(with: urlRequest) { data, response, error in
+          if error != nil {
+            DispatchQueue.main.async {
+                completion(false, error)
+            }
+              return
+          }
+          let range = 5..<data!.count
+          let newData = data?.subdata(in: range) /* subset response data! */
+          print(String(data: newData!, encoding: .utf8)!)
+            let decoder = JSONDecoder()
+            do {
+                let responseObject = try decoder.decode(GetUserInformationResponse.self, from: newData!)
+                UserSession.firstName = responseObject.firstName
+                UserSession.lastName = responseObject.lastName
+                UserSession.nickname = responseObject.nickname
+                DispatchQueue.main.async { completion(true, nil) }
+            } catch {
+                DispatchQueue.main.async { completion(false, error)}
+            }
+        }
+        task.resume()
+    }
+    
+    class func getMapDataRequest<ResponseType: Decodable>(url: URL, responseType: ResponseType.Type, completion: @escaping (ResponseType?, Error?) -> Void) {
+        let url = Endpoint.getMapPointsURL.url
         let urlRequest = URLRequest(url: url!)
         let task = URLSession.shared.dataTask(with: urlRequest) { data, response, error in
             guard let data = data else {

@@ -39,8 +39,7 @@ class LoginViewController: UIViewController {
     func handleLogInResponse(success: Bool, error: Error?) {
         if success {
             // get user public data
-            print("Logged In!!!, getting user info")
-            //segue to next screen and get map pins
+            UdacityAPI.getUserInformationRequest(completion: confirmLogIn(success:error:))
         } else {
             showLoginFailure(message: error?.localizedDescription ?? "")
         }
@@ -48,8 +47,8 @@ class LoginViewController: UIViewController {
     
     func confirmLogIn(success: Bool, error: Error?) {
         if success {
-            //segue to next screen and get map pins
             print("Got User Info for: \(UserSession.firstName)")
+            performSegue(withIdentifier: "LogInSuccessSegue", sender: self)
         } else {
             showLoginFailure(message: error?.localizedDescription ?? "")
         }
@@ -74,7 +73,6 @@ class LoginViewController: UIViewController {
         show(alertVC, sender: nil)
         updateViewState(isViewClickable: true)
     }
-    
-    
+  
 }
 
