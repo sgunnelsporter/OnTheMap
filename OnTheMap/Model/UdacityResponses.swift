@@ -14,6 +14,13 @@ struct PostSessionResponse: Codable {
     let session: SessionInformation
 }
 
+struct ErrorInPostResponse: Codable, Error {
+    let status: Int
+    let error: String
+    
+    var localizedDescription: String { return self.error}
+}
+
 struct DeleteSessionResponse: Codable {
     let session: SessionInformation
 }

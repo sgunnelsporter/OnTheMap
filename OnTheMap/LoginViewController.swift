@@ -10,21 +10,53 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
+    //MARK: Outlets
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
+    //MARK: Load View
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         updateViewState(isViewClickable: true)
     }
 
+    //MARK: Log-in
     @IBAction func loginRequested(_ sender: Any) {
         self.updateViewState(isViewClickable: false)
+        UdacityAPI.login(username: emailTextField.text ?? "", password: passwordTextField.text ?? "", completion: handleLogInResponse(success:error:))
+        
+    }
+    //MARK: Supporting Network Functions
+    
+    func postUdacitySession() -> Void {
+        
     }
     
+    //MARK: Completion Handlers
+    func handleLogInResponse(success: Bool, error: Error?) {
+        if success {
+            // get user public data
+            print("Logged In!!!, getting user info")
+            //segue to next screen and get map pins
+        } else {
+            showLoginFailure(message: error?.localizedDescription ?? "")
+        }
+    }
+    
+    func confirmLogIn(success: Bool, error: Error?) {
+        if success {
+            //segue to next screen and get map pins
+            print("Got User Info for: \(UserSession.firstName)")
+        } else {
+            showLoginFailure(message: error?.localizedDescription ?? "")
+        }
+    }
+    
+    
+    //MARK: Supporting View Fuctions
     func updateViewState(isViewClickable: Bool) -> Void {
         loginButton.isEnabled = isViewClickable
         emailTextField.isEnabled = isViewClickable
@@ -35,6 +67,14 @@ class LoginViewController: UIViewController {
             activityIndicator.stopAnimating()
         }
     }
+    
+    func showLoginFailure(message: String) {
+        let alertVC = UIAlertController(title: "Login Failed", message: message, preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        show(alertVC, sender: nil)
+        updateViewState(isViewClickable: true)
+    }
+    
     
 }
 
