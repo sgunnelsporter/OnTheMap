@@ -1,0 +1,46 @@
+//
+//  UdacityResponses.swift
+//  OnTheMap
+//
+//  Created by Sarah Gunnels Porter on 6/27/20.
+//  Copyright © 2020 Gunnels Porter. All rights reserved.
+//
+
+import Foundation
+
+//MARK: Structures for the Responses Received from Udactiy API
+struct PostSessionResponse: Codable {
+    let account: AccountInformation
+    let session: SessionInformation
+}
+
+struct DeleteSessionResponse: Codable {
+    let session: SessionInformation
+}
+
+struct GetUserInformationResponse: Codable {
+    // Not all keys are coded here, only those needed for functionality are decoded
+    let firstName: String
+    let lastName: String
+    let nickname: String
+    
+    enum CodingKeys: String, CodingKey {
+        case firstName = "first_name"
+        case lastName = "last_name"
+        case nickname
+    }
+}
+
+
+//MARK: Nested Structures
+struct AccountInformation: Codable {
+    let registered: Bool
+    let key: String
+}
+
+struct SessionInformation: Codable {
+    let id: String
+    let expiration: String
+}
+
+
