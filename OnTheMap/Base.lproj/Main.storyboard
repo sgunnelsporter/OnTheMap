@@ -48,11 +48,11 @@
                                     <color key="titleColor" cocoaTouchSystemColor="lightTextColor"/>
                                 </state>
                                 <connections>
-                                    <segue destination="hpq-cU-VBx" kind="presentation" modalPresentationStyle="fullScreen" id="Jmq-wL-KtF"/>
+                                    <action selector="loginRequested:" destination="BYZ-38-t0r" eventType="touchUpInside" id="S0d-dT-g8p"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="pub-au-y2l">
-                                <rect key="frame" x="86" y="544" width="242" height="30"/>
+                                <rect key="frame" x="86" y="522" width="242" height="30"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have an account?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ylf-9g-Fuv">
                                         <rect key="frame" x="0.0" y="0.0" width="179" height="30"/>
@@ -66,12 +66,19 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <activityIndicatorView hidden="YES" opaque="NO" alpha="0.40000000000000002" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="fcE-rr-g1S">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="color" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="8pX-9W-wLX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="60" id="1Pm-nH-8IS"/>
+                            <constraint firstItem="fcE-rr-g1S" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="5iS-db-rVC"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="BPw-wr-gUy" secondAttribute="trailing" constant="80" id="5kY-J0-JeA"/>
                             <constraint firstItem="8pX-9W-wLX" firstAttribute="top" secondItem="Fw5-9m-1ue" secondAttribute="bottom" constant="30" id="AyM-yJ-dWg"/>
+                            <constraint firstItem="fcE-rr-g1S" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="LDn-Dl-ieb"/>
                             <constraint firstItem="BPw-wr-gUy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="80" id="POk-iM-CwX"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Fw5-9m-1ue" secondAttribute="trailing" constant="60" id="Qwb-RR-w89"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="8pX-9W-wLX" secondAttribute="trailing" constant="60" id="RId-zH-csQ"/>
@@ -79,15 +86,21 @@
                             <constraint firstItem="Fw5-9m-1ue" firstAttribute="top" secondItem="cJU-Fx-uY2" secondAttribute="bottom" constant="60" id="V39-kg-dHa"/>
                             <constraint firstItem="cJU-Fx-uY2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ZRq-T5-ZqS"/>
                             <constraint firstItem="cJU-Fx-uY2" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="auz-5s-deJ"/>
-                            <constraint firstItem="pub-au-y2l" firstAttribute="top" secondItem="BPw-wr-gUy" secondAttribute="bottom" constant="30" id="gkK-cB-3ca"/>
+                            <constraint firstItem="pub-au-y2l" firstAttribute="top" secondItem="BPw-wr-gUy" secondAttribute="bottom" constant="8" id="gkK-cB-3ca"/>
+                            <constraint firstItem="fcE-rr-g1S" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="iYK-OF-RR6"/>
                             <constraint firstItem="BPw-wr-gUy" firstAttribute="top" secondItem="8pX-9W-wLX" secondAttribute="bottom" constant="40" id="msS-kl-67s"/>
                             <constraint firstItem="8pX-9W-wLX" firstAttribute="top" secondItem="Fw5-9m-1ue" secondAttribute="bottom" constant="30" id="tH3-zg-GuI"/>
                             <constraint firstItem="BPw-wr-gUy" firstAttribute="top" secondItem="8pX-9W-wLX" secondAttribute="bottom" constant="40" id="tS4-fO-Af3"/>
+                            <constraint firstItem="fcE-rr-g1S" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="yKV-rv-2q1"/>
                             <constraint firstItem="Fw5-9m-1ue" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="60" id="zLN-f6-ZE7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="fcE-rr-g1S" id="bHK-o8-1qp"/>
+                        <outlet property="emailTextField" destination="Fw5-9m-1ue" id="7iO-Xb-Hd4"/>
+                        <outlet property="loginButton" destination="BPw-wr-gUy" id="zLS-m2-znl"/>
+                        <outlet property="passwordTextField" destination="8pX-9W-wLX" id="m6n-LE-teX"/>
                         <segue destination="hpq-cU-VBx" kind="presentation" modalPresentationStyle="fullScreen" id="txO-Nt-56F"/>
                     </connections>
                 </viewController>
@@ -379,7 +392,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="7TN-nH-DfU"/>
-        <segue reference="Jmq-wL-KtF"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="LocationGlobe" width="52" height="67"/>
