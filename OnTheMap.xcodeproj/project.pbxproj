@@ -9,23 +9,27 @@
 /* Begin PBXBuildFile section */
 		26D5D5A524A782E2000DD3E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D5D5A424A782E2000DD3E9 /* AppDelegate.swift */; };
 		26D5D5A724A782E2000DD3E9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D5D5A624A782E2000DD3E9 /* SceneDelegate.swift */; };
-		26D5D5A924A782E2000DD3E9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D5D5A824A782E2000DD3E9 /* ViewController.swift */; };
+		26D5D5A924A782E2000DD3E9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D5D5A824A782E2000DD3E9 /* LoginViewController.swift */; };
 		26D5D5AC24A782E2000DD3E9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26D5D5AA24A782E2000DD3E9 /* Main.storyboard */; };
 		26D5D5AF24A782E2000DD3E9 /* OnTheMap.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 26D5D5AD24A782E2000DD3E9 /* OnTheMap.xcdatamodeld */; };
 		26D5D5B124A782E4000DD3E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26D5D5B024A782E4000DD3E9 /* Assets.xcassets */; };
 		26D5D5B424A782E4000DD3E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26D5D5B224A782E4000DD3E9 /* LaunchScreen.storyboard */; };
+		26D5D5BC24A79271000DD3E9 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D5D5BB24A79271000DD3E9 /* MapViewController.swift */; };
+		26D5D5BE24A792FF000DD3E9 /* PinListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D5D5BD24A792FF000DD3E9 /* PinListTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		26D5D5A124A782E2000DD3E9 /* OnTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26D5D5A424A782E2000DD3E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		26D5D5A624A782E2000DD3E9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		26D5D5A824A782E2000DD3E9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		26D5D5A824A782E2000DD3E9 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		26D5D5AB24A782E2000DD3E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		26D5D5AE24A782E2000DD3E9 /* OnTheMap.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = OnTheMap.xcdatamodel; sourceTree = "<group>"; };
 		26D5D5B024A782E4000DD3E9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		26D5D5B324A782E4000DD3E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		26D5D5B524A782E4000DD3E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		26D5D5BB24A79271000DD3E9 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		26D5D5BD24A792FF000DD3E9 /* PinListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinListTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,7 +64,9 @@
 			children = (
 				26D5D5A424A782E2000DD3E9 /* AppDelegate.swift */,
 				26D5D5A624A782E2000DD3E9 /* SceneDelegate.swift */,
-				26D5D5A824A782E2000DD3E9 /* ViewController.swift */,
+				26D5D5A824A782E2000DD3E9 /* LoginViewController.swift */,
+				26D5D5BB24A79271000DD3E9 /* MapViewController.swift */,
+				26D5D5BD24A792FF000DD3E9 /* PinListTableViewController.swift */,
 				26D5D5AA24A782E2000DD3E9 /* Main.storyboard */,
 				26D5D5B024A782E4000DD3E9 /* Assets.xcassets */,
 				26D5D5B224A782E4000DD3E9 /* LaunchScreen.storyboard */,
@@ -141,9 +147,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				26D5D5A924A782E2000DD3E9 /* ViewController.swift in Sources */,
+				26D5D5A924A782E2000DD3E9 /* LoginViewController.swift in Sources */,
 				26D5D5AF24A782E2000DD3E9 /* OnTheMap.xcdatamodeld in Sources */,
 				26D5D5A524A782E2000DD3E9 /* AppDelegate.swift in Sources */,
+				26D5D5BC24A79271000DD3E9 /* MapViewController.swift in Sources */,
+				26D5D5BE24A792FF000DD3E9 /* PinListTableViewController.swift in Sources */,
 				26D5D5A724A782E2000DD3E9 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
