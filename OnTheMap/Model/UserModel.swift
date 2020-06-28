@@ -16,3 +16,8 @@ struct UserSession {
     static var lastName: String = ""
     static var nickname: String = ""
 }
+
+//MARK: Map Locations
+struct MapPins {
+    static var mapPins = [LocationResults]()
+}

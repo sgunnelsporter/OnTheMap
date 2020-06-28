@@ -15,14 +15,15 @@ class UdacityAPI {
         case loginInformationEndpoint = "https://onthemap-api.udacity.com/v1/session"
         case getUserInformationEndpoint = "https://onthemap-api.udacity.com/v1/users/"
         case parseMapInformationEndpoint = "https://onthemap-api.udacity.com/v1/StudentLocation"
-        case getMapPointsURL = "https://onthemap-api.udacity.com/v1/StudentLocation?limit=100&order=-updatedAt"
+        case getMapPointsURL = "https://onthemap-api.udacity.com/v1/StudentLocation?limit=10&order=-updatedAt"
         
         var url : URL? {
             return URL(string: self.rawValue)
         }
     
     }
-    
+ 
+    //MARK: Logging In Network Calls
     class func login(username: String, password: String, completion: @escaping (Bool, Error?) -> Void) {
         let loginDetails = Udacity(username: username, password: password)
         let body = LogInStruct.init(udacity: loginDetails)
@@ -94,29 +95,33 @@ class UdacityAPI {
         task.resume()
     }
     
-    class func getMapDataRequest<ResponseType: Decodable>(url: URL, responseType: ResponseType.Type, completion: @escaping (ResponseType?, Error?) -> Void) {
+    //MARK: Map Pin Data Network Calls
+    class func getMapDataRequest(completion: @escaping ([LocationResults], Error?) -> Void) {
         let url = Endpoint.getMapPointsURL.url
         let urlRequest = URLRequest(url: url!)
         let task = URLSession.shared.dataTask(with: urlRequest) { data, response, error in
             guard let data = data else {
                 DispatchQueue.main.async {
-                    completion(nil, error)
+                    completion([], error)
                 }
                 return
             }
+            print(String(data: data, encoding: .utf8)!)
             let decoder = JSONDecoder()
             do {
-                let responseObject = try decoder.decode(ResponseType.self, from: data)
+                let fullResponseObject = try decoder.decode(StudentLocationResponse.self, from: data)
+                let responseArray = fullResponseObject.results
                 DispatchQueue.main.async {
-                    completion(responseObject, nil)
+                    completion(responseArray, nil)
                 }
             } catch {
                 DispatchQueue.main.async {
-                    completion(nil, error)
+                    completion([], error)
                 }
             }
         }
         task.resume()
     }
+    
 }
 

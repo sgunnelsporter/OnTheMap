@@ -16,6 +16,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
+    let segueToMapViewID = "LogInSuccessSegue"
     //MARK: Load View
     override func viewDidLoad() {
         super.viewDidLoad()
