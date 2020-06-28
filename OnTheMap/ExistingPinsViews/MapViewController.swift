@@ -24,6 +24,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         self.mapView.delegate = self
         if MapPins.mapPins.isEmpty {
             self.loadMapData()
+        } else {
+            self.locations = MapPins.mapPins
         }
     }
     
@@ -55,20 +57,16 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     //MARK: Displaying Map Data
     func translateDictionaryToAnnotations(){
         for loc in locations {
-            
-            // Notice that the float values are being used to create CLLocationDegree values.
-            // This is a version of the Double type.
             let lat = CLLocationDegrees(loc.latitude)
             let long = CLLocationDegrees(loc.longitude)
             let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
 
-            // Here we create the annotation and set its coordiate, title, and subtitle properties
+            // Create the annotation; setting coordiates, title, and subtitle properties
             let annotation = MKPointAnnotation()
             annotation.coordinate = coordinate
             annotation.title = "\(loc.firstName) \(loc.lastName)"
             annotation.subtitle = loc.mediaURL
             
-            // Finally we place the annotation in an array of annotations.
             annotations.append(annotation)
         }
     }
@@ -85,7 +83,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                 MapPins.mapPins = studentLocationsArray
                 self.locations = MapPins.mapPins
                 self.translateDictionaryToAnnotations()
-                //UdacityAPI.getMapDataRequest(completion: loadLocationsIntoMapAnnotations(mapData: error:))
                 self.mapView.addAnnotations(self.annotations)
             }
         })
