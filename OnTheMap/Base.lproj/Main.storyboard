@@ -138,9 +138,16 @@
                                     <segue destination="rfh-1v-V3U" kind="presentation" id="ezq-We-lUK"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="Refresh" image="arrow.clockwise" catalog="system" id="4WU-Qk-f5E"/>
+                            <barButtonItem title="Refresh" image="arrow.clockwise" catalog="system" id="4WU-Qk-f5E">
+                                <connections>
+                                    <action selector="refreshDataFromNetwork:" destination="gfF-eH-2tf" id="nue-vw-ELJ"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
+                    <connections>
+                        <outlet property="mapView" destination="43I-xY-JYT" id="TOe-oE-9GJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Bl-NH-eZw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -155,7 +162,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="rsS-Dc-QlN" detailTextLabel="qOr-YE-NIP" imageView="U3O-Hs-R9B" style="IBUITableViewCellStyleSubtitle" id="KEs-gS-dOQ">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MapPinCell" textLabel="rsS-Dc-QlN" detailTextLabel="qOr-YE-NIP" imageView="U3O-Hs-R9B" style="IBUITableViewCellStyleSubtitle" id="KEs-gS-dOQ">
                                 <rect key="frame" x="0.0" y="28" width="414" height="55.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KEs-gS-dOQ" id="dLC-vp-71Z">
@@ -251,7 +258,6 @@
                         <constraints>
                             <constraint firstItem="pfZ-cH-GYM" firstAttribute="trailing" secondItem="g8V-c7-jmG" secondAttribute="trailing" constant="50" id="0Ax-jy-QsA"/>
                             <constraint firstItem="uKK-tS-fj2" firstAttribute="leading" secondItem="pfZ-cH-GYM" secondAttribute="leading" constant="50" id="6Sz-Qk-nBk"/>
-                            <constraint firstItem="y4t-Im-yMn" firstAttribute="centerX" secondItem="iHZ-Bx-BEZ" secondAttribute="centerX" id="6lY-re-esl"/>
                             <constraint firstItem="pfZ-cH-GYM" firstAttribute="trailing" secondItem="uKK-tS-fj2" secondAttribute="trailing" constant="50" id="Atp-Zg-OUA"/>
                             <constraint firstItem="pfZ-cH-GYM" firstAttribute="trailing" secondItem="y4t-Im-yMn" secondAttribute="trailing" constant="80" id="C0q-cm-EyW"/>
                             <constraint firstItem="pOV-Bp-6TZ" firstAttribute="top" secondItem="pfZ-cH-GYM" secondAttribute="top" constant="60" id="ICq-gQ-300"/>
@@ -391,7 +397,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="7TN-nH-DfU"/>
+        <segue reference="ezq-We-lUK"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="LocationGlobe" width="52" height="67"/>

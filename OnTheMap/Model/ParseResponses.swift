@@ -10,19 +10,21 @@ import Foundation
 
 //MARK: Structures for Parse Responses
 // Parse has been replaced with a Udacity API, but stuctures kept seperate for clarity
-struct StudentLocationResponse: Codable{
-    let createdAt: Date
+struct StudentLocationResponse: Codable {
+    let results: [LocationResults]
+}
+struct LocationResults: Codable {
     let firstName: String
     let lastName: String
-    let latitude: Double // -90 to 90
     let longitude: Double // -180 to 180
+    let latitude: Double // -90 to 90
     let mapString: String
     let mediaURL: String
-    let objectId: String
     let uniqueKey: String
-    let updatedAt: Date
+    let objectId: String
+    let createdAt: String
+    let updatedAt: String
 }
-
 
 struct PostLocationResponse: Codable {
     let createdAt: Date
