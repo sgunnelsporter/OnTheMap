@@ -15,7 +15,7 @@ class UdacityAPI {
         case loginInformationEndpoint = "https://onthemap-api.udacity.com/v1/session"
         case getUserInformationEndpoint = "https://onthemap-api.udacity.com/v1/users/"
         case parseMapInformationEndpoint = "https://onthemap-api.udacity.com/v1/StudentLocation"
-        case getMapPointsURL = "https://onthemap-api.udacity.com/v1/StudentLocation?limit=10&order=-updatedAt"
+        case getMapPointsURL = "https://onthemap-api.udacity.com/v1/StudentLocation?limit=100&order=-updatedAt"
         
         var url : URL? {
             return URL(string: self.rawValue)

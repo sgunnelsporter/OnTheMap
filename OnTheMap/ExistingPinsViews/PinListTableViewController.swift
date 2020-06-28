@@ -53,5 +53,10 @@ class PinListTableViewController: UITableViewController {
         return cell
     }
 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let urlToOpen = URL(string: self.locations[indexPath.row].mediaURL) {
+           UIApplication.shared.open(urlToOpen)
+        }
+    }
 
 }
