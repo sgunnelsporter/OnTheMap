@@ -7,9 +7,14 @@
 //
 
 import UIKit
+import MapKit
 
 class ConfirmLocationViewController: UIViewController {
 
+    var newLocation = CLLocationCoordinate2D()
+    var newLocationString = ""
+    var newLocationURL = URL(string: "")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
