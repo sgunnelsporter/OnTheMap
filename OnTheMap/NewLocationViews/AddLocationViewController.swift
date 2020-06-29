@@ -32,6 +32,7 @@ class AddLocationViewController: UIViewController {
                 }
             }
         })
+        
         performSegue(withIdentifier: self.confirmMapLocationSegueId, sender: self)
     }
     //MARK: cancel
@@ -51,7 +52,9 @@ class AddLocationViewController: UIViewController {
         if segue.identifier == self.confirmMapLocationSegueId {
             
             let controller = segue.destination as! ConfirmLocationViewController
-            controller.newLocation = CLLocationCoordinate2D(latitude: 0, longitude: 0)
+            controller.newLocation = self.newLocation
+            controller.newLocationString = self.locationTextField.text ?? ""
+            controller.newLocationURL = URL(string: self.urlTextField.text ?? "")
         }
     }
 

@@ -310,6 +310,9 @@
                                 <state key="normal" title="Finish">
                                     <color key="titleColor" cocoaTouchSystemColor="lightTextColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="finishAndPost:" destination="6v7-0E-HZu" eventType="touchUpInside" id="mxL-sJ-9GW"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -324,6 +327,9 @@
                         <viewLayoutGuide key="safeArea" id="7aq-Qx-oUA"/>
                     </view>
                     <navigationItem key="navigationItem" id="TSn-UC-IzU"/>
+                    <connections>
+                        <outlet property="confirmMapView" destination="gRN-Ff-hYw" id="TM1-ti-UPG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xb5-Vs-JHI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

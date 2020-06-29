@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 // MARK: API URL Endpoints
 class UdacityAPI {
@@ -32,9 +33,7 @@ class UdacityAPI {
            request.addValue("application/json", forHTTPHeaderField: "Accept")
            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
 
-        let jsonBody = try! JSONEncoder().encode(body)
-        request.httpBody = jsonBody
-        print(jsonBody)
+        request.httpBody = try! JSONEncoder().encode(body)
         let session = URLSession.shared
         let task = session.dataTask(with: request) { data, response, error in
           if error != nil {
@@ -106,7 +105,6 @@ class UdacityAPI {
                 }
                 return
             }
-            print(String(data: data, encoding: .utf8)!)
             let decoder = JSONDecoder()
             do {
                 let fullResponseObject = try decoder.decode(StudentLocationResponse.self, from: data)
@@ -123,5 +121,27 @@ class UdacityAPI {
         task.resume()
     }
     
+    class func postNewStudenLocation(newLatitude: Double, newLongitude: Double, locationString: String, locationMediaURL: String, completion: @escaping ([LocationResults], Error?) -> Void) {
+        let postRequestBody = StudentLocation(uniqueKey: UserSession.userId, firstName: UserSession.firstName, lastName: UserSession.lastName, mapString: locationString, mediaURL: locationMediaURL, latitude: newLatitude, longitude: newLongitude)
+        
+        var request = URLRequest(url: self.Endpoint.parseMapInformationEndpoint.url!)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        do {
+            request.httpBody = try JSONEncoder().encode(postRequestBody)
+            let session = URLSession.shared
+            let task = session.dataTask(with: request) { data, response, error in
+              if error != nil {
+                print(error?.localizedDescription ?? "")
+                  return
+              }
+                print("GOT a response to load")
+            }
+            task.resume()
+        } catch {
+            print("Issue encoding Request Body")
+        }
+    }
 }
 
