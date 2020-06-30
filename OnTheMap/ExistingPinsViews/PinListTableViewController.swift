@@ -23,7 +23,7 @@ class PinListTableViewController: UITableViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+        self.tableView.reloadData()
     }
     
     // MARK: - Table view data source

@@ -96,6 +96,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="gig-bL-BCl"/>
                     <connections>
                         <outlet property="activityIndicator" destination="fcE-rr-g1S" id="bHK-o8-1qp"/>
                         <outlet property="emailTextField" destination="Fw5-9m-1ue" id="7iO-Xb-Hd4"/>
@@ -131,7 +132,11 @@
                     </view>
                     <navigationItem key="navigationItem" title="On The Map" leftItemsSupplementBackButton="YES" id="OeK-vr-ZLG">
                         <barButtonItem key="backBarButtonItem" title="Logout" id="ACg-ky-G8j"/>
-                        <barButtonItem key="leftBarButtonItem" title="Logout" id="ogX-B2-lQ0"/>
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="ogX-B2-lQ0">
+                            <connections>
+                                <action selector="logout:" destination="gfF-eH-2tf" id="5Ag-7d-9gQ"/>
+                            </connections>
+                        </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem title="Add Pin" image="plus" catalog="system" id="4fc-Es-c52">
                                 <connections>
@@ -428,7 +433,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="7TN-nH-DfU"/>
+        <segue reference="ezq-We-lUK"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="LocationGlobe" width="52" height="67"/>

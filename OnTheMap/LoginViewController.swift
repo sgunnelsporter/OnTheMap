@@ -48,7 +48,9 @@ class LoginViewController: UIViewController {
     
     func confirmLogIn(success: Bool, error: Error?) {
         if success {
-            print("Got User Info for: \(UserSession.firstName)")
+            self.emailTextField.text = nil
+            self.passwordTextField.text = nil
+            self.updateViewState(isViewClickable: true)
             performSegue(withIdentifier: "LogInSuccessSegue", sender: self)
         } else {
             showLoginFailure(message: error?.localizedDescription ?? "")
@@ -67,6 +69,7 @@ class LoginViewController: UIViewController {
             activityIndicator.stopAnimating()
         }
     }
+    
     
     func showLoginFailure(message: String) {
         let alertVC = UIAlertController(title: "Login Failed", message: message, preferredStyle: .alert)
