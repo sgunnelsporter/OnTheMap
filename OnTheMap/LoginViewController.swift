@@ -17,13 +17,19 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     let segueToMapViewID = "LogInSuccessSegue"
-    //MARK: Load View
+    
+    //MARK: Load or unload View
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         updateViewState(isViewClickable: true)
     }
 
+    override func viewDidDisappear(_ animated: Bool) {
+        self.emailTextField.text = nil
+        self.passwordTextField.text = nil
+        self.updateViewState(isViewClickable: true) 
+    }
     //MARK: Log-in
     @IBAction func loginRequested(_ sender: Any) {
         self.updateViewState(isViewClickable: false)
@@ -48,9 +54,6 @@ class LoginViewController: UIViewController {
     
     func confirmLogIn(success: Bool, error: Error?) {
         if success {
-            self.emailTextField.text = nil
-            self.passwordTextField.text = nil
-            self.updateViewState(isViewClickable: true)
             performSegue(withIdentifier: "LogInSuccessSegue", sender: self)
         } else {
             showLoginFailure(message: error?.localizedDescription ?? "")
