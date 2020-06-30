@@ -93,6 +93,9 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         })
     }
     @IBAction func logout(_ sender: Any) {
+        // perform network logout
+        UdacityAPI.deleteSessionRequest()
+        // dismiss view
         self.dismiss(animated: true, completion: {})
     }
     

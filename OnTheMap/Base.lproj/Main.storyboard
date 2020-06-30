@@ -45,7 +45,7 @@
                                     <constraint firstAttribute="height" constant="40" id="YM1-Mn-dkX"/>
                                 </constraints>
                                 <state key="normal" title="Log-in">
-                                    <color key="titleColor" cocoaTouchSystemColor="lightTextColor"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="loginRequested:" destination="BYZ-38-t0r" eventType="touchUpInside" id="S0d-dT-g8p"/>
@@ -203,7 +203,11 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="On The Map" leftItemsSupplementBackButton="YES" id="3Uq-35-Rht">
                         <barButtonItem key="backBarButtonItem" title="Logout" id="z7f-8h-HiH"/>
-                        <barButtonItem key="leftBarButtonItem" title="Logout" id="IsF-H0-4hj"/>
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="IsF-H0-4hj">
+                            <connections>
+                                <action selector="logout:" destination="bzu-Pf-bqH" id="9Oc-lb-8sg"/>
+                            </connections>
+                        </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem title="Add Pin" image="plus" catalog="system" id="9Sc-Zp-hOD">
                                 <connections>
@@ -256,7 +260,7 @@
                                 <rect key="frame" x="80" y="526" width="254" height="30"/>
                                 <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Find Location">
-                                    <color key="titleColor" cocoaTouchSystemColor="lightTextColor"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="findLocationRequest:" destination="9QS-TE-oML" eventType="touchUpInside" id="5Kz-o2-8Cx"/>
@@ -329,7 +333,7 @@
                                     <constraint firstAttribute="height" constant="40" id="j6y-5G-ti1"/>
                                 </constraints>
                                 <state key="normal" title="Finish">
-                                    <color key="titleColor" cocoaTouchSystemColor="lightTextColor"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="finishAndPost:" destination="6v7-0E-HZu" eventType="touchUpInside" id="mxL-sJ-9GW"/>
@@ -433,7 +437,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ezq-We-lUK"/>
+        <segue reference="7TN-nH-DfU"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="LocationGlobe" width="52" height="67"/>

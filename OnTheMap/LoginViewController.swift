@@ -30,8 +30,8 @@ class LoginViewController: UIViewController {
         UdacityAPI.login(username: emailTextField.text ?? "", password: passwordTextField.text ?? "", completion: handleLogInResponse(success:error:))
         
     }
-    //MARK: Supporting Network Functions
     
+    //MARK: Supporting Network Functions
     func postUdacitySession() -> Void {
         
     }
