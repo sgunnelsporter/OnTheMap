@@ -12,20 +12,20 @@ class PinListTableViewController: UITableViewController {
 
     var locations = [LocationResults]()
 
+    //MARK: Loading functions
     override func viewDidLoad() {
         super.viewDidLoad()
         if MapPins.mapPins.isEmpty {
             self.loadMapData()
-        } else {
-            self.locations = MapPins.mapPins
         }
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        self.locations = MapPins.mapPins
     }
-
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+    }
+    
     // MARK: - Table view data source
     func loadMapData() {
         UdacityAPI.getMapDataRequest(completion: { (studentLocationsArray, error) in
@@ -33,11 +33,11 @@ class PinListTableViewController: UITableViewController {
                 print(error?.localizedDescription ?? "")
             } else {
                 MapPins.mapPins = studentLocationsArray
-                self.locations = MapPins.mapPins
             }
         })
     }
     
+    //MARK: Table View Control
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -58,5 +58,13 @@ class PinListTableViewController: UITableViewController {
            UIApplication.shared.open(urlToOpen)
         }
     }
+    
+    //MARK: Refresh Button
+    @IBAction func refreshMapData(_ sender: Any) {
+        self.loadMapData()
+        self.locations = MapPins.mapPins
+        self.tableView.reloadData()
+    }
+    
 
 }

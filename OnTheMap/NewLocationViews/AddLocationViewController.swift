@@ -16,7 +16,14 @@ class AddLocationViewController: UIViewController {
     
     @IBOutlet weak var locationTextField: UITextField!
     @IBOutlet weak var urlTextField: UITextField!
+    @IBOutlet weak var errorLabelView: UILabel!
     
+    //MARK: View Did Load
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.errorLabelView.isHidden = true
+    }
 
     //MARK: Location Button Pressed
     @IBAction func findLocationRequest(_ sender: Any) {
@@ -27,13 +34,13 @@ class AddLocationViewController: UIViewController {
             } else {
                 if let newPlacemark = placemark?.first, let newLoc = newPlacemark.location?.coordinate {
                     self.newLocation = newLoc
+                    self.performSegue(withIdentifier: self.confirmMapLocationSegueId, sender: self)
                 } else {
                     print("Error in digging for Coordinate!")
                 }
             }
         })
         
-        performSegue(withIdentifier: self.confirmMapLocationSegueId, sender: self)
     }
     //MARK: cancel
     @IBAction func cancelNewLocation(_ sender: Any) {
@@ -42,9 +49,8 @@ class AddLocationViewController: UIViewController {
     
     //MARK: Error Alert
     func showErrorAlert(_ message: String) {
-        let alertVC = UIAlertController(title: "Location Lookup Failed", message: message, preferredStyle: .alert)
-        alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        show(alertVC, sender: nil)
+        self.errorLabelView.text = "ERROR: \(message)"
+        self.errorLabelView.isHidden = false
     }
     
     //MARK: Segue

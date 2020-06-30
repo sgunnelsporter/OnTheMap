@@ -24,9 +24,13 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         self.mapView.delegate = self
         if MapPins.mapPins.isEmpty {
             self.loadMapData()
-        } else {
-            self.locations = MapPins.mapPins
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.locations = MapPins.mapPins
     }
     
     //MARK: MapViewDelegate
