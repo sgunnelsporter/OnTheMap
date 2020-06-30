@@ -42,7 +42,7 @@ class UdacityAPI {
           }
           let range = 5..<data!.count
           let newData = data?.subdata(in: range) /* subset response data! */
-          print(String(data: newData!, encoding: .utf8)!)
+          //print(String(data: newData!, encoding: .utf8)!)
             if let responseObject = try? JSONDecoder().decode(ErrorInPostResponse.self, from: newData!) {
                 DispatchQueue.main.async {
                     completion(false, responseObject)
@@ -79,7 +79,7 @@ class UdacityAPI {
           }
           let range = 5..<data!.count
           let newData = data?.subdata(in: range) /* subset response data! */
-          print(String(data: newData!, encoding: .utf8)!)
+          //print(String(data: newData!, encoding: .utf8)!)
             let decoder = JSONDecoder()
             do {
                 let responseObject = try decoder.decode(GetUserInformationResponse.self, from: newData!)
@@ -90,6 +90,32 @@ class UdacityAPI {
             } catch {
                 DispatchQueue.main.async { completion(false, error)}
             }
+        }
+        task.resume()
+    }
+    
+    //MARK: Logout Network Call
+    class func deleteSessionRequest() {
+        let url = Endpoint.loginInformationEndpoint.url
+        var request = URLRequest(url: url!)
+        request.httpMethod = "DELETE"
+        var xsrfCookie: HTTPCookie? = nil
+        let sharedCookieStorage = HTTPCookieStorage.shared
+        for cookie in sharedCookieStorage.cookies! {
+          if cookie.name == "XSRF-TOKEN" { xsrfCookie = cookie }
+        }
+        if let xsrfCookie = xsrfCookie {
+          request.setValue(xsrfCookie.value, forHTTPHeaderField: "X-XSRF-TOKEN")
+        }
+        let session = URLSession.shared
+        let task = session.dataTask(with: request) { data, response, error in
+          if error != nil {
+            print(error?.localizedDescription ?? "")
+              return
+          }
+          let range = 5..<data!.count
+          let newData = data?.subdata(in: range) /* subset response data! */
+            print(String(data: newData!, encoding: .utf8)!)
         }
         task.resume()
     }
@@ -136,7 +162,6 @@ class UdacityAPI {
                 print(error?.localizedDescription ?? "")
                   return
               }
-                print("GOT a response to load")
             }
             task.resume()
         } catch {

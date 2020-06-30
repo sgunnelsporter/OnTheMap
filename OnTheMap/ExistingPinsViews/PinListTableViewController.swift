@@ -59,12 +59,18 @@ class PinListTableViewController: UITableViewController {
         }
     }
     
-    //MARK: Refresh Button
+    //MARK: IBActions
     @IBAction func refreshMapData(_ sender: Any) {
         self.loadMapData()
         self.locations = MapPins.mapPins
         self.tableView.reloadData()
     }
     
-
+    @IBAction func logout(_ sender: Any) {
+        // perform network logout
+        UdacityAPI.deleteSessionRequest()
+        // dismiss view
+        self.dismiss(animated: true, completion: {})
+    }
+    
 }
