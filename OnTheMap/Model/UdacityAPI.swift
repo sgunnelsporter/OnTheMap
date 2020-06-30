@@ -25,7 +25,7 @@ class UdacityAPI {
     }
  
     //MARK: Logging In Network Calls
-    class func login(username: String, password: String, completion: @escaping (Bool, Error?) -> Void) {
+    class func login(username: String, password: String, completion: @escaping (Bool, String?) -> Void) {
         let loginDetails = Udacity(username: username, password: password)
         let body = LogInStruct.init(udacity: loginDetails)
         var request = URLRequest(url: UdacityAPI.Endpoint.loginInformationEndpoint.url!)
@@ -45,7 +45,8 @@ class UdacityAPI {
           //print(String(data: newData!, encoding: .utf8)!)
             if let responseObject = try? JSONDecoder().decode(ErrorInPostResponse.self, from: newData!) {
                 DispatchQueue.main.async {
-                    completion(false, responseObject)
+                    let message = responseObject.error
+                    completion(false, message)
                 }
             } else {
                 do {
@@ -56,7 +57,7 @@ class UdacityAPI {
                     }
                 } catch {
                     DispatchQueue.main.async {
-                        completion(false, error)
+                        completion(false, error.localizedDescription)
                     }
                 }
             }

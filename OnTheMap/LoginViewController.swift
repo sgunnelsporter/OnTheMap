@@ -27,7 +27,7 @@ class LoginViewController: UIViewController {
     //MARK: Log-in
     @IBAction func loginRequested(_ sender: Any) {
         self.updateViewState(isViewClickable: false)
-        UdacityAPI.login(username: emailTextField.text ?? "", password: passwordTextField.text ?? "", completion: handleLogInResponse(success:error:))
+        UdacityAPI.login(username: emailTextField.text ?? "", password: passwordTextField.text ?? "", completion: handleLogInResponse(success:errorMessage:))
         
     }
     
@@ -37,12 +37,12 @@ class LoginViewController: UIViewController {
     }
     
     //MARK: Completion Handlers
-    func handleLogInResponse(success: Bool, error: Error?) {
+    func handleLogInResponse(success: Bool, errorMessage: String?) {
         if success {
             // get user public data
             UdacityAPI.getUserInformationRequest(completion: confirmLogIn(success:error:))
         } else {
-            showLoginFailure(message: error?.localizedDescription ?? "")
+            showLoginFailure(message: errorMessage ?? "")
         }
     }
     
