@@ -27,19 +27,23 @@ class AddLocationViewController: UIViewController {
 
     //MARK: Location Button Pressed
     @IBAction func findLocationRequest(_ sender: Any) {
-        let geoCoder = CLGeocoder()
-        geoCoder.geocodeAddressString(self.locationTextField.text ?? "", completionHandler: { (placemark, error) in
-            if error != nil {
-                self.showErrorAlert(error!.localizedDescription)
-            } else {
-                if let newPlacemark = placemark?.first, let newLoc = newPlacemark.location?.coordinate {
-                    self.newLocation = newLoc
-                    self.performSegue(withIdentifier: self.confirmMapLocationSegueId, sender: self)
+        if self.urlTextField.text == nil || self.urlTextField.text == "" {
+            self.showErrorAlert("Please provide a URL for this location.")
+        } else {
+            let geoCoder = CLGeocoder()
+            geoCoder.geocodeAddressString(self.locationTextField.text ?? "", completionHandler: { (placemark, error) in
+                if error != nil {
+                    self.showErrorAlert(error!.localizedDescription)
                 } else {
-                    print("Error in digging for Coordinate!")
+                    if let newPlacemark = placemark?.first, let newLoc = newPlacemark.location?.coordinate {
+                        self.newLocation = newLoc
+                        self.performSegue(withIdentifier: self.confirmMapLocationSegueId, sender: self)
+                    } else {
+                        print("Error in digging for Coordinate!")
+                    }
                 }
-            }
-        })
+            })
+        }
         
     }
     //MARK: cancel
