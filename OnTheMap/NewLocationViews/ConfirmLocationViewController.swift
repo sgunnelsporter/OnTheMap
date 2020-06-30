@@ -29,6 +29,7 @@ class ConfirmLocationViewController: UIViewController, MKMapViewDelegate {
         self.proposedAnnotation.title = newLocationString
         self.proposedAnnotation.subtitle = newLocationURL?.absoluteString
         //set annotation on map view
+        self.confirmMapView.centerCoordinate = self.newLocation
         self.confirmMapView.addAnnotations([proposedAnnotation])
     }
     
