@@ -96,6 +96,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="gig-bL-BCl"/>
                     <connections>
                         <outlet property="activityIndicator" destination="fcE-rr-g1S" id="bHK-o8-1qp"/>
                         <outlet property="emailTextField" destination="Fw5-9m-1ue" id="7iO-Xb-Hd4"/>
@@ -131,7 +132,11 @@
                     </view>
                     <navigationItem key="navigationItem" title="On The Map" leftItemsSupplementBackButton="YES" id="OeK-vr-ZLG">
                         <barButtonItem key="backBarButtonItem" title="Logout" id="ACg-ky-G8j"/>
-                        <barButtonItem key="leftBarButtonItem" title="Logout" id="ogX-B2-lQ0"/>
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="ogX-B2-lQ0">
+                            <connections>
+                                <action selector="logout:" destination="gfF-eH-2tf" id="5Ag-7d-9gQ"/>
+                            </connections>
+                        </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem title="Add Pin" image="plus" catalog="system" id="4fc-Es-c52">
                                 <connections>
@@ -205,7 +210,11 @@
                                     <segue destination="rfh-1v-V3U" kind="presentation" id="7TN-nH-DfU"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="Refresh" image="arrow.clockwise" catalog="system" id="9jb-ua-bIH"/>
+                            <barButtonItem title="Refresh" image="arrow.clockwise" catalog="system" id="9jb-ua-bIH">
+                                <connections>
+                                    <action selector="refreshMapData:" destination="bzu-Pf-bqH" id="gQN-GW-RGL"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                 </tableViewController>
@@ -250,9 +259,16 @@
                                     <color key="titleColor" cocoaTouchSystemColor="lightTextColor"/>
                                 </state>
                                 <connections>
-                                    <segue destination="6v7-0E-HZu" kind="show" id="Hve-o7-LFy"/>
+                                    <action selector="findLocationRequest:" destination="9QS-TE-oML" eventType="touchUpInside" id="5Kz-o2-8Cx"/>
                                 </connections>
                             </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error Message" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fzN-G8-ffL">
+                                <rect key="frame" x="40" y="326" width="334" height="22"/>
+                                <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -260,12 +276,16 @@
                             <constraint firstItem="uKK-tS-fj2" firstAttribute="leading" secondItem="pfZ-cH-GYM" secondAttribute="leading" constant="50" id="6Sz-Qk-nBk"/>
                             <constraint firstItem="pfZ-cH-GYM" firstAttribute="trailing" secondItem="uKK-tS-fj2" secondAttribute="trailing" constant="50" id="Atp-Zg-OUA"/>
                             <constraint firstItem="pfZ-cH-GYM" firstAttribute="trailing" secondItem="y4t-Im-yMn" secondAttribute="trailing" constant="80" id="C0q-cm-EyW"/>
+                            <constraint firstItem="fzN-G8-ffL" firstAttribute="leading" secondItem="pfZ-cH-GYM" secondAttribute="leading" constant="40" id="HaR-Io-0Dd"/>
                             <constraint firstItem="pOV-Bp-6TZ" firstAttribute="top" secondItem="pfZ-cH-GYM" secondAttribute="top" constant="60" id="ICq-gQ-300"/>
                             <constraint firstItem="pfZ-cH-GYM" firstAttribute="trailing" secondItem="pOV-Bp-6TZ" secondAttribute="trailing" constant="100" id="KzE-Up-tkb"/>
                             <constraint firstItem="uKK-tS-fj2" firstAttribute="top" secondItem="g8V-c7-jmG" secondAttribute="bottom" constant="30" id="WTk-CF-db7"/>
                             <constraint firstItem="y4t-Im-yMn" firstAttribute="top" secondItem="uKK-tS-fj2" secondAttribute="bottom" constant="60" id="Wnh-w6-lQx"/>
+                            <constraint firstItem="g8V-c7-jmG" firstAttribute="top" secondItem="fzN-G8-ffL" secondAttribute="bottom" constant="8" id="Xao-DH-mEi"/>
+                            <constraint firstItem="fzN-G8-ffL" firstAttribute="top" secondItem="pOV-Bp-6TZ" secondAttribute="bottom" constant="30" id="czm-SE-pO9"/>
                             <constraint firstItem="g8V-c7-jmG" firstAttribute="top" secondItem="pOV-Bp-6TZ" secondAttribute="bottom" constant="60" id="lgW-Ya-rCb"/>
                             <constraint firstItem="pOV-Bp-6TZ" firstAttribute="centerX" secondItem="iHZ-Bx-BEZ" secondAttribute="centerX" id="rhz-No-PI1"/>
+                            <constraint firstItem="pfZ-cH-GYM" firstAttribute="trailing" secondItem="fzN-G8-ffL" secondAttribute="trailing" constant="40" id="ufd-aN-Skz"/>
                             <constraint firstItem="g8V-c7-jmG" firstAttribute="leading" secondItem="pfZ-cH-GYM" secondAttribute="leading" constant="50" id="urc-Ee-CRY"/>
                             <constraint firstItem="y4t-Im-yMn" firstAttribute="leading" secondItem="pfZ-cH-GYM" secondAttribute="leading" constant="80" id="yil-aK-qYc"/>
                             <constraint firstItem="pOV-Bp-6TZ" firstAttribute="leading" secondItem="pfZ-cH-GYM" secondAttribute="leading" constant="100" id="z2y-b9-W8z"/>
@@ -273,8 +293,18 @@
                         <viewLayoutGuide key="safeArea" id="pfZ-cH-GYM"/>
                     </view>
                     <navigationItem key="navigationItem" title="Add Location" id="nSE-2K-PPf">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="l4y-mC-JVg"/>
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="l4y-mC-JVg">
+                            <connections>
+                                <action selector="cancelNewLocation:" destination="9QS-TE-oML" id="O8N-an-MEI"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="errorLabelView" destination="fzN-G8-ffL" id="B4A-6z-mrT"/>
+                        <outlet property="locationTextField" destination="g8V-c7-jmG" id="LUa-hq-lhR"/>
+                        <outlet property="urlTextField" destination="uKK-tS-fj2" id="GeR-Pf-FhE"/>
+                        <segue destination="6v7-0E-HZu" kind="show" identifier="confirmMapLocationSegue" id="mwa-OX-a0g"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xF1-WS-Txh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -301,6 +331,9 @@
                                 <state key="normal" title="Finish">
                                     <color key="titleColor" cocoaTouchSystemColor="lightTextColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="finishAndPost:" destination="6v7-0E-HZu" eventType="touchUpInside" id="mxL-sJ-9GW"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -315,6 +348,9 @@
                         <viewLayoutGuide key="safeArea" id="7aq-Qx-oUA"/>
                     </view>
                     <navigationItem key="navigationItem" id="TSn-UC-IzU"/>
+                    <connections>
+                        <outlet property="confirmMapView" destination="gRN-Ff-hYw" id="TM1-ti-UPG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xb5-Vs-JHI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

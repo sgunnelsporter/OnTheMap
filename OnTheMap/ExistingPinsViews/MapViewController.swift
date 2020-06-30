@@ -24,9 +24,14 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         self.mapView.delegate = self
         if MapPins.mapPins.isEmpty {
             self.loadMapData()
-        } else {
-            self.locations = MapPins.mapPins
         }
+        self.locations = MapPins.mapPins
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.mapView.addAnnotations(self.annotations)
+        
     }
     
     //MARK: MapViewDelegate
@@ -73,6 +78,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     //MARK: Actions
     @IBAction func refreshDataFromNetwork(_ sender: Any) {
         self.loadMapData()
+        self.mapView.addAnnotations(self.annotations)
     }
     
     func loadMapData() {
@@ -83,10 +89,12 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                 MapPins.mapPins = studentLocationsArray
                 self.locations = MapPins.mapPins
                 self.translateDictionaryToAnnotations()
-                self.mapView.addAnnotations(self.annotations)
             }
         })
     }
-
+    @IBAction func logout(_ sender: Any) {
+        self.dismiss(animated: true, completion: {})
+    }
+    
 
 }
