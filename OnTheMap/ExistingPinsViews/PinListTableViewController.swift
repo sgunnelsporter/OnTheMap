@@ -41,7 +41,7 @@ class PinListTableViewController: UITableViewController {
         self.networkActivity.startAnimating()
         UdacityAPI.getMapDataRequest(completion: { (studentLocationsArray, error) in
             if error != nil {
-                print(error?.localizedDescription ?? "")
+                self.showDownloadFailure(error?.localizedDescription ?? "")
             } else {
                 MapPins.mapPins = studentLocationsArray
             }
@@ -85,4 +85,10 @@ class PinListTableViewController: UITableViewController {
         self.dismiss(animated: true, completion: {})
     }
     
+    //MARK: Error Handling
+    func showDownloadFailure(_ message: String) {
+        let alertVC = UIAlertController(title: "Download Failed", message: message, preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        show(alertVC, sender: nil)
+    }
 }

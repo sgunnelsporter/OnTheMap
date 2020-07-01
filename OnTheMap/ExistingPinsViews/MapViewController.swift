@@ -76,17 +76,12 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             annotations.append(annotation)
         }
     }
-    //MARK: Actions
-    @IBAction func refreshDataFromNetwork(_ sender: Any) {
-        self.loadMapData()
-        self.mapView.addAnnotations(self.annotations)
-    }
     
     func loadMapData() {
         self.networkBusy.startAnimating()
         UdacityAPI.getMapDataRequest(completion: { (studentLocationsArray, error) in
             if error != nil {
-                print(error?.localizedDescription ?? "")
+                self.showDownloadFailure(error?.localizedDescription ?? "")
             } else {
                 MapPins.mapPins = studentLocationsArray
                 self.locations = MapPins.mapPins
@@ -95,6 +90,13 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             self.networkBusy.stopAnimating()
         })
     }
+    
+    //MARK: Actions
+    @IBAction func refreshDataFromNetwork(_ sender: Any) {
+        self.loadMapData()
+        self.mapView.addAnnotations(self.annotations)
+    }
+    
     @IBAction func logout(_ sender: Any) {
         // perform network logout
         UdacityAPI.deleteSessionRequest()
@@ -103,4 +105,10 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
 
+    //MARK: Error Handling
+    func showDownloadFailure(_ message: String) {
+        let alertVC = UIAlertController(title: "Download Failed", message: message, preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        show(alertVC, sender: nil)
+    }
 }
