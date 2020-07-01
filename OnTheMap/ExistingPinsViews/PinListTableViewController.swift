@@ -11,14 +11,24 @@ import UIKit
 class PinListTableViewController: UITableViewController {
 
     var locations = [LocationResults]()
-
+    var networkActivity = UIActivityIndicatorView()
+    
     //MARK: Loading functions
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.addActivityIndicator()
         if MapPins.mapPins.isEmpty {
             self.loadMapData()
         }
         self.locations = MapPins.mapPins
+    }
+    
+    func addActivityIndicator() {
+        self.networkActivity = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 80, height: 80))
+        self.networkActivity.style = UIActivityIndicatorView.Style.medium
+        self.networkActivity.center = self.view.center
+        self.networkActivity.hidesWhenStopped = true
+        self.view.addSubview(self.networkActivity)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -28,12 +38,14 @@ class PinListTableViewController: UITableViewController {
     
     // MARK: - Table view data source
     func loadMapData() {
+        self.networkActivity.startAnimating()
         UdacityAPI.getMapDataRequest(completion: { (studentLocationsArray, error) in
             if error != nil {
                 print(error?.localizedDescription ?? "")
             } else {
                 MapPins.mapPins = studentLocationsArray
             }
+            self.networkActivity.stopAnimating()
         })
     }
     

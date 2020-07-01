@@ -17,6 +17,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     //MARK: Outlets
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var networkBusy: UIActivityIndicatorView!
     
     //MARK: ViewDidLoad
     override func viewDidLoad() {
@@ -82,6 +83,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     func loadMapData() {
+        self.networkBusy.startAnimating()
         UdacityAPI.getMapDataRequest(completion: { (studentLocationsArray, error) in
             if error != nil {
                 print(error?.localizedDescription ?? "")
@@ -90,6 +92,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                 self.locations = MapPins.mapPins
                 self.translateDictionaryToAnnotations()
             }
+            self.networkBusy.stopAnimating()
         })
     }
     @IBAction func logout(_ sender: Any) {

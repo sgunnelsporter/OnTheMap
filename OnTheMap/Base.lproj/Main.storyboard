@@ -120,9 +120,19 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="43I-xY-JYT">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                             </mapView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="R0W-NH-kTC">
+                                <rect key="frame" x="167" y="408" width="80" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="eLE-Or-q4m"/>
+                                    <constraint firstAttribute="height" constant="80" id="h1x-mJ-fWC"/>
+                                </constraints>
+                                <color key="color" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="R0W-NH-kTC" firstAttribute="centerX" secondItem="2at-L3-WcC" secondAttribute="centerX" id="8Bc-c2-Is2"/>
+                            <constraint firstItem="R0W-NH-kTC" firstAttribute="centerY" secondItem="2at-L3-WcC" secondAttribute="centerY" id="Jnc-xB-CME"/>
                             <constraint firstItem="43I-xY-JYT" firstAttribute="leading" secondItem="gKo-71-TxK" secondAttribute="leading" id="N3R-kk-qIF"/>
                             <constraint firstItem="43I-xY-JYT" firstAttribute="bottom" secondItem="gKo-71-TxK" secondAttribute="bottom" id="SE0-1Q-YT6"/>
                             <constraint firstItem="43I-xY-JYT" firstAttribute="top" secondItem="gKo-71-TxK" secondAttribute="top" id="WRQ-ce-zdH"/>
@@ -152,6 +162,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="43I-xY-JYT" id="TOe-oE-9GJ"/>
+                        <outlet property="networkBusy" destination="R0W-NH-kTC" id="yz3-zx-LGM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Bl-NH-eZw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -437,7 +448,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="7TN-nH-DfU"/>
+        <segue reference="ezq-We-lUK"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="LocationGlobe" width="52" height="67"/>
