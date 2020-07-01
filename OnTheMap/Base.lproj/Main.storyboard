@@ -63,6 +63,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zg6-sb-VkZ">
                                         <rect key="frame" x="187" y="0.0" width="55" height="30"/>
                                         <state key="normal" title="Sign-up"/>
+                                        <connections>
+                                            <action selector="sendToUdacity:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8DP-vM-AGm"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>

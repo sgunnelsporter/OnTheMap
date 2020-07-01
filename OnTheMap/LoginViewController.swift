@@ -17,6 +17,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     let segueToMapViewID = "LogInSuccessSegue"
+    let udacityURL = URL(string: "https://www.udacity.com")!
     
     //MARK: Load or unload View
     override func viewDidLoad() {
@@ -30,10 +31,14 @@ class LoginViewController: UIViewController {
         self.passwordTextField.text = nil
         self.updateViewState(isViewClickable: true) 
     }
-    //MARK: Log-in
+    //MARK: IBActions
     @IBAction func loginRequested(_ sender: Any) {
         self.updateViewState(isViewClickable: false)
         UdacityAPI.login(username: emailTextField.text ?? "", password: passwordTextField.text ?? "", completion: handleLogInResponse(success:errorMessage:))
+    }
+    
+    @IBAction func sendToUdacity(_ sender: Any) {
+        UIApplication.shared.open(self.udacityURL)
         
     }
     
